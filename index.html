@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy 26th Birthday! 🎂</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Kalam:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet"/>
   <style>
     :root{
       --pink:#ff6b9d;--gold:#ffd700;--purple:#b388ff;--rose:#ff4081;
@@ -378,33 +378,51 @@
       margin-top: 40px;
     }
     .letter-box{
-      max-width:760px;
+      max-width:780px;
       margin:0 auto;
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 55px 45px;
-      box-shadow: 0 20px 60px rgba(45, 0, 53, 0.12), 0 0 40px rgba(255, 107, 157, 0.15);
+      background: #fdfbf7;
+      background-image: 
+        linear-gradient(90deg, transparent 55px, #ffb3ba 55px, #ffb3ba 57px, transparent 57px),
+        linear-gradient(#e4e0d7 1px, transparent 1px);
+      background-size: 100% 100%, 100% 36px;
+      line-height: 36px;
+      border-radius: 12px;
+      padding: 50px 38px 50px 75px;
+      box-shadow: 0 15px 45px rgba(50, 20, 40, 0.15), 0 2px 10px rgba(0,0,0,0.06), inset 0 0 40px rgba(240, 230, 215, 0.6);
       position:relative;
       overflow:hidden;
-      border: 1px solid rgba(255, 182, 193, 0.5);
+      border: 1px solid #e2ded4;
     }
     .letter-box::before{
-      content:'\275D';
+      content:'';
       position:absolute;
-      top:15px;
-      left:20px;
-      font-size:7rem;
-      color:rgba(255,107,157,0.08);
-      font-family:serif;
-      line-height:1;
+      top:0;
+      bottom:0;
+      left:24px;
+      width:14px;
+      background-image: radial-gradient(circle, #bbb 3px, transparent 4px);
+      background-size: 14px 40px;
+      background-repeat: repeat-y;
       pointer-events: none;
+      opacity: 0.7;
+    }
+    .diary-date-stamp {
+      font-family: 'Kalam', cursive;
+      font-size: 1.15rem;
+      color: #8c5a6c;
+      text-align: right;
+      margin-bottom: 20px;
+      border-bottom: 2px dashed rgba(140, 90, 108, 0.3);
+      padding-bottom: 8px;
     }
     .letter-content{
-      font-size:clamp(0.96rem, 2.3vw, 1.12rem);
-      line-height:2.05;
-      color:#3a3a3a;
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.22rem, 3.2vw, 1.48rem);
+      line-height: 36px;
+      color: #2b2b2b;
       position:relative;
       z-index:1;
+      letter-spacing: 0.3px;
     }
     .letter-content p {
       margin-bottom: 18px;
@@ -413,30 +431,34 @@
       margin-bottom: 24px;
     }
     .letter-content strong {
-      color: #d81b60;
+      color: #b71c1c;
       font-weight: 700;
+      font-family: 'Caveat', cursive;
     }
     .letter-content span{
-      color:var(--rose);
-      font-weight:600;
+      color: #c2185b;
+      font-weight: 700;
+      text-decoration: underline wavy #ffb3d1;
     }
     .letter-quote-callout {
-      border-left: 4px solid #ff4081;
-      padding: 12px 18px;
-      margin: 24px 0;
-      background: #fff5f8;
-      border-radius: 0 16px 16px 0;
-      font-style: italic;
-      color: #6a0080;
+      border-left: 3px solid #d81b60;
+      padding: 8px 16px;
+      margin: 20px 0;
+      background: rgba(255, 235, 240, 0.6);
+      border-radius: 0 12px 12px 0;
+      font-family: 'Kalam', cursive;
+      font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+      line-height: 32px;
+      color: #4a148c;
     }
     .letter-sign{
-      font-family:'Dancing Script',cursive;
-      font-size:2rem;
-      color:var(--rose);
-      margin-top:35px;
-      text-align:right;
-      border-top: 1px dashed rgba(255, 107, 157, 0.3);
-      padding-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: #c2185b;
+      margin-top: 36px;
+      text-align: right;
+      border-top: 1px dashed rgba(194, 24, 91, 0.35);
+      padding-top: 16px;
     }
 
     /* ── LIGHTBOX ── */
@@ -1011,30 +1033,33 @@
     <h2 class="section-title">Make It Rain Fireworks!</h2>
     <div class="section-line"></div>
   </div>
-  <button class="firework-btn" onclick="launchFireworks()">🎆 Launch Fireworks for Her! 🎆</button>
+  <button class="firework-btn" onclick="launchFireworks()">🎆 Launch Fireworks for You! 🎆</button>
   <div class="fw-hint">Click to celebrate in style ✨</div>
 </section>
 
-<!-- ═══════════════════════════ LETTER ═══════════════════════════ -->
+<!-- ═══════════════════════════ LETTER / DIARY ═══════════════════════════ -->
 <section class="letter-section" id="letter">
   <div class="section-header fade-up">
-    <span class="section-tag">💌 From The Heart</span>
-    <h2 class="section-title">One Last Thing For You...</h2>
+    <span class="section-tag">📖 Dear Diary</span>
+    <h2 class="section-title">A Page From My Heart...</h2>
     <div class="section-line"></div>
   </div>
 
-  <!-- CLICK BUTTON TO UNLOCK / REVEAL LETTER -->
+  <!-- CLICK BUTTON TO UNLOCK / REVEAL DIARY -->
   <div class="letter-lock-cta fade-up">
     <button class="btn-open-letter" id="btn-toggle-letter" onclick="toggleSecretLetter()">
-      <span id="letter-btn-icon">💌</span>
-      <span id="letter-btn-text">Click Here to Read My Letter to You</span>
+      <span id="letter-btn-icon">📖</span>
+      <span id="letter-btn-text">Click here to read a small portion of my diary</span>
       <span>✨</span>
     </button>
-    <div class="letter-cta-sub">A special message written just for your 26th birthday... 🌸</div>
+    <div class="letter-cta-sub">Written straight from memories, for your 26th birthday... 🌸</div>
   </div>
 
   <div class="letter-wrapper" id="secret-letter-wrapper">
     <div class="letter-box">
+      <div class="diary-date-stamp">
+        🗓️ September 17, 2026 &nbsp;|&nbsp; ✍️ Entry: "The Girl From Class 3"
+      </div>
       <div class="letter-content">
         <p>There was a girl I met in <span>Class 3</span>.</p>
         <p>Back then, she was just a girl in my classroom.</p>
@@ -1565,12 +1590,12 @@ function toggleSecretLetter(){
 
   if(wrapper.classList.contains('revealed')){
     wrapper.classList.remove('revealed');
-    if(icon) icon.textContent = '💌';
-    if(text) text.textContent = 'Click Here to Read My Letter to You';
+    if(icon) icon.textContent = '📖';
+    if(text) text.textContent = 'Click here to read a small portion of my diary';
   } else {
     wrapper.classList.add('revealed');
     if(icon) icon.textContent = '📖';
-    if(text) text.textContent = 'Close Letter';
+    if(text) text.textContent = 'Close Diary Page';
     
     // Smoothly scroll down to the letter
     setTimeout(()=>{
