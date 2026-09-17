@@ -637,18 +637,27 @@
       margin-bottom: 12px;
       line-height: 1.2;
     }
-    .sorry-kiss-gif-wrap {
-      margin: 0 auto 14px;
+    .sorry-emoji-wrap {
+      margin: 4px auto 14px;
       display: flex;
       justify-content: center;
+      align-items: center;
+      gap: 12px;
     }
-    .sorry-kiss-gif {
-      width: 170px;
-      height: 145px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 2px solid #ffd700;
-      box-shadow: 0 8px 24px rgba(255, 64, 129, 0.4);
+    .sorry-emoji-display {
+      font-size: clamp(3.2rem, 8vw, 4.2rem);
+      display: inline-block;
+      animation: sorryHeadShake 1.8s ease-in-out infinite;
+      filter: drop-shadow(0 6px 16px rgba(255, 64, 129, 0.4));
+    }
+    @keyframes sorryHeadShake {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      25% { transform: translateY(-4px) rotate(-8deg) scale(1.08); }
+      75% { transform: translateY(-4px) rotate(8deg) scale(1.08); }
+    }
+    .sorry-emoji-side {
+      font-size: 2rem;
+      animation: pulse 1.5s infinite alternate;
     }
     .sorry-modal-body {
       font-size: 0.92rem;
@@ -764,12 +773,14 @@
     <button class="sorry-modal-close" onclick="closeSorryModal()">✕</button>
     <div class="sorry-modal-badge">📜 OFFICIAL CONFESSION & APOLOGY</div>
     
-    <!-- KISS WALA GIF -->
-    <div class="sorry-kiss-gif-wrap">
-      <img src="https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif" alt="Sending Love & Apology Kisses" class="sorry-kiss-gif" onerror="this.onerror=null;this.src='https://media.giphy.com/media/l4FsKa1PncvdMRnHi/giphy.gif';">
+    <!-- SORRY EMOJI DISPLAY -->
+    <div class="sorry-emoji-wrap">
+      <span class="sorry-emoji-side">🙈</span>
+      <span class="sorry-emoji-display">🥺👉👈</span>
+      <span class="sorry-emoji-side">🙇‍♂️</span>
     </div>
 
-    <h3 class="sorry-modal-title">I'm Sooo Sorry Sima! 🥺💋</h3>
+    <h3 class="sorry-modal-title">I'm Sooo Sorry Sima! 🥺💛</h3>
     
     <div class="sorry-modal-body">
       "I humbly and publicly apologize for writing <span>Class 6</span> earlier! My brain clearly experienced a temporary malfunction due to excessive awe of your photos! 🙈✨<br/><br/>
@@ -778,7 +789,7 @@
 
     <div class="sorry-modal-actions">
       <button class="sorry-ok-btn" onclick="closeSorryModal()">
-        💋 CLICK HERE TO FORGIVE ME! 🥺💛
+        🥺 CLICK HERE TO FORGIVE ME! 💛✨
       </button>
     </div>
   </div>
@@ -1523,12 +1534,12 @@ function closeSorryModal(){
     startConfetti();
     launchFireworks();
     launchHearts();
-    const kissEmojis = ['💋','😘','💖','🥰','✨','🌸'];
+    const celebrationEmojis = ['🌸','💛','✨','🎉','🥰','🥺','💖'];
     for(let i=0; i<25; i++){
       setTimeout(()=>{
         const k = document.createElement('div');
         k.className = 'music-note';
-        k.textContent = kissEmojis[Math.floor(Math.random()*kissEmojis.length)];
+        k.textContent = celebrationEmojis[Math.floor(Math.random()*celebrationEmojis.length)];
         k.style.left = (Math.random()*90 + 5) + 'vw';
         k.style.top = (Math.random()*80 + 10) + 'vh';
         k.style.fontSize = (Math.random()*1.8 + 1.2) + 'rem';
