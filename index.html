@@ -530,6 +530,19 @@
       margin-bottom: 12px;
       line-height: 1.2;
     }
+    .sorry-kiss-gif-wrap {
+      margin: 0 auto 14px;
+      display: flex;
+      justify-content: center;
+    }
+    .sorry-kiss-gif {
+      width: 170px;
+      height: 145px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 2px solid #ffd700;
+      box-shadow: 0 8px 24px rgba(255, 64, 129, 0.4);
+    }
     .sorry-modal-body {
       font-size: 0.92rem;
       line-height: 1.65;
@@ -537,8 +550,9 @@
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       padding: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
     }
     .sorry-modal-body span {
       color: #ffd700;
@@ -546,25 +560,38 @@
     }
     .sorry-modal-actions {
       display: flex;
+      flex-direction: column;
       gap: 10px;
+      align-items: center;
       justify-content: center;
     }
     .sorry-ok-btn {
-      background: linear-gradient(135deg, #ff4081, #ff6b9d);
+      background: linear-gradient(135deg, #ff1744 0%, #ff4081 50%, #ff80ab 100%);
       color: white;
-      border: none;
-      padding: 12px 28px;
-      border-radius: 30px;
+      border: 2px solid #ffd700;
+      padding: 16px 36px;
+      border-radius: 50px;
       font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: clamp(1rem, 3.2vw, 1.2rem);
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 30px rgba(255, 23, 68, 0.5), 0 0 20px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: forgivePulse 1.8s infinite;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+    @keyframes forgivePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 23, 68, 0.5); }
+      50% { transform: scale(1.06); box-shadow: 0 14px 40px rgba(255, 23, 68, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
     }
     .sorry-ok-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+      transform: scale(1.1) !important;
+    }
+    .sorry-ok-btn:active {
+      transform: scale(0.96) !important;
     }
     .sorry-modal-close {
       position: absolute;
@@ -629,14 +656,23 @@
   <div class="sorry-dialog-box">
     <button class="sorry-modal-close" onclick="closeSorryModal()">✕</button>
     <div class="sorry-modal-badge">📜 OFFICIAL CONFESSION & APOLOGY</div>
-    <h3 class="sorry-modal-title">Oops! My Bad Sima! 🙈</h3>
-    <div class="sorry-modal-body">
-      "I humbly and publicly apologize for writing <span>Class 6</span> earlier! 😭<br/><br/>
-      My brain clearly experienced a momentary overload from seeing how stunning your photos are! ✨<br/><br/>
-      Knowing you since <span>Class 3</span> makes our story so much deeper, sweeter, and legendary! 💛"
+    
+    <!-- KISS WALA GIF -->
+    <div class="sorry-kiss-gif-wrap">
+      <img src="https://media.giphy.com/media/G3va31oEEnIkM/giphy.gif" alt="Sending Love & Apology Kisses" class="sorry-kiss-gif" onerror="this.onerror=null;this.src='https://media.giphy.com/media/l4FsKa1PncvdMRnHi/giphy.gif';">
     </div>
+
+    <h3 class="sorry-modal-title">I'm Sooo Sorry Sima! 🥺💋</h3>
+    
+    <div class="sorry-modal-body">
+      "I humbly and publicly apologize for writing <span>Class 6</span> earlier! My brain clearly experienced a temporary malfunction due to excessive awe of your photos! 🙈✨<br/><br/>
+      Knowing you since <span>Class 3</span> makes our bond 100x more legendary and special! Happy 26th Birthday Sima!" 🎂💛
+    </div>
+
     <div class="sorry-modal-actions">
-      <button class="sorry-ok-btn" onclick="closeSorryModal()">Forgiven! Let's Celebrate 🎉</button>
+      <button class="sorry-ok-btn" onclick="closeSorryModal()">
+        💋 CLICK HERE TO FORGIVE ME! 🥺💛
+      </button>
     </div>
   </div>
 </div>
@@ -1201,6 +1237,21 @@ function closeSorryModal(){
   if(modal) {
     modal.classList.remove('active');
     startConfetti();
+    launchFireworks();
+    launchHearts();
+    const kissEmojis = ['💋','😘','💖','🥰','✨','🌸'];
+    for(let i=0; i<25; i++){
+      setTimeout(()=>{
+        const k = document.createElement('div');
+        k.className = 'music-note';
+        k.textContent = kissEmojis[Math.floor(Math.random()*kissEmojis.length)];
+        k.style.left = (Math.random()*90 + 5) + 'vw';
+        k.style.top = (Math.random()*80 + 10) + 'vh';
+        k.style.fontSize = (Math.random()*1.8 + 1.2) + 'rem';
+        document.body.appendChild(k);
+        setTimeout(()=>k.remove(), 3500);
+      }, i * 40);
+    }
   }
 }
 
