@@ -473,6 +473,119 @@
       text-decoration: underline;
       cursor: pointer;
     }
+
+    /* ── CUTE SYSTEM/IN-PAGE APOLOGY MODAL ── */
+    #sorry-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(15, 2, 22, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 16px;
+    }
+    #sorry-modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .sorry-dialog-box {
+      background: linear-gradient(160deg, #240533 0%, #150020 100%);
+      border: 2px solid #ffd700;
+      box-shadow: 0 20px 60px rgba(255, 64, 129, 0.35), 0 0 40px rgba(255, 215, 0, 0.25);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 440px;
+      padding: 26px 22px;
+      text-align: center;
+      position: relative;
+      animation: modalPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      color: white;
+    }
+    @keyframes modalPopIn {
+      from { transform: scale(0.7) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .sorry-modal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid #ffd700;
+      color: #ffd700;
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .sorry-modal-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: #ff6b9d;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .sorry-modal-body {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: #fce4ec;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .sorry-modal-body span {
+      color: #ffd700;
+      font-weight: 700;
+    }
+    .sorry-modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .sorry-ok-btn {
+      background: linear-gradient(135deg, #ff4081, #ff6b9d);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .sorry-ok-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6);
+    }
+    .sorry-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .sorry-modal-close:hover {
+      background: rgba(255, 64, 129, 0.8);
+    }
   </style>
 </head>
 <body>
@@ -508,6 +621,23 @@
     <img src="images/gita.jpg" alt="Favourite Photo" class="surprise-img"/>
     <div class="surprise-caption">📖 My Absolute Favourite Photo of You 💛</div>
     <div class="surprise-sub">Reading the Bhagavad Gita with those beautiful eyes peeking out — timeless ✨</div>
+  </div>
+</div>
+
+<!-- CUTE IN-PAGE SORRY MODAL (REPLACES BROWSER ALERT) -->
+<div id="sorry-modal-overlay" onclick="handleSorryOverlayClick(event)">
+  <div class="sorry-dialog-box">
+    <button class="sorry-modal-close" onclick="closeSorryModal()">✕</button>
+    <div class="sorry-modal-badge">📜 OFFICIAL CONFESSION & APOLOGY</div>
+    <h3 class="sorry-modal-title">Oops! My Bad Sima! 🙈</h3>
+    <div class="sorry-modal-body">
+      "I humbly and publicly apologize for writing <span>Class 6</span> earlier! 😭<br/><br/>
+      My brain clearly experienced a momentary overload from seeing how stunning your photos are! ✨<br/><br/>
+      Knowing you since <span>Class 3</span> makes our story so much deeper, sweeter, and legendary! 💛"
+    </div>
+    <div class="sorry-modal-actions">
+      <button class="sorry-ok-btn" onclick="closeSorryModal()">Forgiven! Let's Celebrate 🎉</button>
+    </div>
   </div>
 </div>
 
@@ -1042,13 +1172,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-/* ── FUNNY SORRY POPUP ── */
+/* ── FUNNY SORRY POPUP (CUSTOM IN-PAGE MODAL, NO NATIVE ALERT) ── */
 function showSorryAlert(){
   startConfetti();
   launchFireworks();
   launchHearts();
   const notes = ['🌸','🙈','💛','🥺','✨','🙇‍♂️'];
-  for(let i=0; i<30; i++){
+  for(let i=0; i<25; i++){
     setTimeout(()=>{
       const n = document.createElement('div');
       n.className = 'music-note';
@@ -1058,11 +1188,26 @@ function showSorryAlert(){
       n.style.fontSize = (Math.random()*1.5 + 1.2) + 'rem';
       document.body.appendChild(n);
       setTimeout(()=>n.remove(), 3500);
-    }, i * 60);
+    }, i * 50);
   }
-  setTimeout(()=>{
-    alert("Official Statement 📜:\n\n'I humbly apologize for writing Class 6 earlier! My brain clearly experienced temporary malfunction due to excessive awe of your photos.\n\nKnowing you since Class 3 makes this story 100x more legendary! Happy 26th Birthday Sima!' 🎂✨");
-  }, 400);
+  const modal = document.getElementById('sorry-modal-overlay');
+  if(modal) {
+    modal.classList.add('active');
+  }
+}
+
+function closeSorryModal(){
+  const modal = document.getElementById('sorry-modal-overlay');
+  if(modal) {
+    modal.classList.remove('active');
+    startConfetti();
+  }
+}
+
+function handleSorryOverlayClick(e){
+  if(e.target.id === 'sorry-modal-overlay'){
+    closeSorryModal();
+  }
 }
 </script>
 </body>
