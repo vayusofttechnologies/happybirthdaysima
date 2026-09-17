@@ -325,12 +325,119 @@
     .fw-hint{margin-top:14px;color:#888;font-size:0.85rem;}
 
     /* ── LETTER ── */
-    .letter-section{padding:60px 20px;background:var(--cream);}
-    .letter-box{max-width:680px;margin:40px auto 0;background:white;border-radius:24px;padding:40px 36px;box-shadow:0 8px 40px rgba(0,0,0,0.1);position:relative;overflow:hidden;}
-    .letter-box::before{content:'\275D';position:absolute;top:20px;left:20px;font-size:5rem;color:rgba(255,107,157,0.1);font-family:serif;line-height:1;}
-    .letter-content{font-size:clamp(0.9rem,2.2vw,1.05rem);line-height:1.9;color:#444;font-style:italic;position:relative;z-index:1;}
-    .letter-content span{color:var(--rose);font-weight:600;}
-    .letter-sign{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--pink);margin-top:24px;text-align:right;}
+    .letter-section{
+      padding:80px 20px 100px;
+      background:linear-gradient(180deg, var(--cream) 0%, #fff0f5 50%, #fdf2f8 100%);
+      position:relative;
+    }
+    .letter-lock-cta {
+      text-align: center;
+      margin: 35px auto 0;
+      max-width: 600px;
+    }
+    .btn-open-letter {
+      background: linear-gradient(135deg, #2d0035 0%, #6a0080 50%, #ff4081 100%);
+      color: #ffd700;
+      border: 2px solid #ffd700;
+      padding: 18px 38px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(106, 0, 128, 0.4), 0 0 25px rgba(255, 215, 0, 0.3);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 2.2s infinite;
+    }
+    .btn-open-letter:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 16px 45px rgba(106, 0, 128, 0.6), 0 0 35px rgba(255, 215, 0, 0.5);
+      color: #fff;
+    }
+    .btn-open-letter:active {
+      transform: scale(0.97);
+    }
+    .letter-cta-sub {
+      color: #888;
+      font-size: 0.88rem;
+      margin-top: 12px;
+      font-style: italic;
+    }
+    .letter-wrapper {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 1.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s ease;
+    }
+    .letter-wrapper.revealed {
+      max-height: 5000px;
+      opacity: 1;
+      margin-top: 40px;
+    }
+    .letter-box{
+      max-width:760px;
+      margin:0 auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 55px 45px;
+      box-shadow: 0 20px 60px rgba(45, 0, 53, 0.12), 0 0 40px rgba(255, 107, 157, 0.15);
+      position:relative;
+      overflow:hidden;
+      border: 1px solid rgba(255, 182, 193, 0.5);
+    }
+    .letter-box::before{
+      content:'\275D';
+      position:absolute;
+      top:15px;
+      left:20px;
+      font-size:7rem;
+      color:rgba(255,107,157,0.08);
+      font-family:serif;
+      line-height:1;
+      pointer-events: none;
+    }
+    .letter-content{
+      font-size:clamp(0.96rem, 2.3vw, 1.12rem);
+      line-height:2.05;
+      color:#3a3a3a;
+      position:relative;
+      z-index:1;
+    }
+    .letter-content p {
+      margin-bottom: 18px;
+    }
+    .letter-content p.break-line {
+      margin-bottom: 24px;
+    }
+    .letter-content strong {
+      color: #d81b60;
+      font-weight: 700;
+    }
+    .letter-content span{
+      color:var(--rose);
+      font-weight:600;
+    }
+    .letter-quote-callout {
+      border-left: 4px solid #ff4081;
+      padding: 12px 18px;
+      margin: 24px 0;
+      background: #fff5f8;
+      border-radius: 0 16px 16px 0;
+      font-style: italic;
+      color: #6a0080;
+    }
+    .letter-sign{
+      font-family:'Dancing Script',cursive;
+      font-size:2rem;
+      color:var(--rose);
+      margin-top:35px;
+      text-align:right;
+      border-top: 1px dashed rgba(255, 107, 157, 0.3);
+      padding-top: 20px;
+    }
 
     /* ── LIGHTBOX ── */
     #lightbox{position:fixed;inset:0;z-index:7777;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s;}
@@ -900,21 +1007,198 @@
 <!-- ═══════════════════════════ LETTER ═══════════════════════════ -->
 <section class="letter-section" id="letter">
   <div class="section-header fade-up">
-    <span class="section-tag">💌 A Note</span>
-    <h2 class="section-title">Just For You</h2>
+    <span class="section-tag">💌 From The Heart</span>
+    <h2 class="section-title">One Last Thing For You...</h2>
     <div class="section-line"></div>
   </div>
-  <div class="letter-box fade-up">
-    <div class="letter-content">
-      <p>Hey you,</p><br/>
-      <p>I still remember the days we sat in the same classroom in <span>Class 3</span> (and yes, sorry again for momentarily typing Class 6 earlier! 🙈 My brain got overwhelmed by how breathtaking your photos are!). Little did I know that tiny classmate from Class 3 would become one of the most <span>precious constants</span> in my life.</p><br/>
-      <p>All these years later, and you're still <span>just as wonderful</span> — maybe even more so. The way you carry yourself, your curiosity, your depth... it's genuinely something special to witness.</p><br/>
-      <p>That photo of you with the <span>Bhagavad Gita</span>? Those eyes peeking out from behind the pages of one of the world's greatest books — that image captures everything. There's a quiet <span>wisdom and mystery</span> in those eyes that I find absolutely incredible.</p><br/>
-      <p>And now seeing you in the snow, at temples, in pink sarees, laughing in the mountains — every version of you is <span>breathtaking</span> in its own way.</p><br/>
-      <p>On your <span>26th birthday</span>, I hope you know that you are loved, admired and appreciated more than you realize. You deserve every good thing. 🌟</p><br/>
-      <p>Happy Birthday 🎂 — may this year be your most magical one yet.</p>
+
+  <!-- CLICK BUTTON TO UNLOCK / REVEAL LETTER -->
+  <div class="letter-lock-cta fade-up">
+    <button class="btn-open-letter" id="btn-toggle-letter" onclick="toggleSecretLetter()">
+      <span id="letter-btn-icon">💌</span>
+      <span id="letter-btn-text">Click Here to Read My Letter to You</span>
+      <span>✨</span>
+    </button>
+    <div class="letter-cta-sub">A special message written just for your 26th birthday... 🌸</div>
+  </div>
+
+  <div class="letter-wrapper" id="secret-letter-wrapper">
+    <div class="letter-box">
+      <div class="letter-content">
+        <p>There was a girl I met in <span>Class 3</span>.</p>
+        <p>Back then, she was just a girl in my classroom.</p>
+        <p>Nothing extraordinary.</p>
+        <p>At least, that's what I thought.</p>
+        
+        <p class="break-line">We were kids. We didn't understand life, love, heartbreak, or the strange ways people can become important to us.</p>
+        
+        <p>We just laughed.</p>
+        <p>We fought over stupid things.</p>
+        <p>We made fun of each other.</p>
+        <p>We shared little secrets that felt like the most important secrets in the world.</p>
+        
+        <p class="break-line">And then one school year became another.<br/>
+        Class 3 became 4.<br/>
+        4 became 5.<br/>
+        And somehow, without either of us noticing, childhood started disappearing.</p>
+        
+        <p>We grew up.<br/>
+        The school uniforms changed.<br/>
+        Our voices changed.<br/>
+        Our dreams changed.<br/>
+        Our problems became bigger.</p>
+        
+        <p class="break-line">And somehow, through all of it, she was still there.<br/>
+        The same girl.<br/>
+        Just with better clothes, stronger opinions, and somehow an unlimited supply of reasons to annoy me. 😂</p>
+        
+        <p>I've known you for so long that remembering my childhood automatically means remembering you.</p>
+        <p>There are memories I have because of you.</p>
+        <p>There are stories I can tell because you were there.</p>
+        <p>There are old photographs where I don't even remember what happened that day, but I remember that you were standing somewhere beside me... <em>(in school photos hehe)</em></p>
+        
+        <p class="break-line">And that's a strange thing about growing up.<br/>
+        You don't realize you're living the good old days while you're living them.<br/>
+        You only understand their value after they've become memories.</p>
+        
+        <p>We spent years thinking there would always be another tomorrow.<br/>
+        Another conversation.<br/>
+        Another joke.<br/>
+        Another day at school.<br/>
+        Another chance to say the things we never said.</p>
+        
+        <p class="break-line">Because when you're young, forever feels like a guarantee.<br/>
+        Then life happens.<br/>
+        People change.<br/>
+        People get busy.<br/>
+        People find new dreams, new places, new people.<br/>
+        And sometimes, without any big fight or dramatic goodbye, two people simply become a little more distant.</p>
+        
+        <p>That's the part nobody tells you about growing up.<br/>
+        Not everything ends with an ending.<br/>
+        Sometimes things just become different.</p>
+        
+        <p class="break-line">And yet, somehow, when I think about you, I don't feel sad about the years that passed.<br/>
+        <strong>I feel grateful.</strong></p>
+        
+        <p>Because I got to know you before the world had a chance to change you.<br/>
+        I got to know the little girl from Class 3.<br/>
+        The girl who laughed at stupid things.<br/>
+        The girl who didn't know what heartbreak was.<br/>
+        The girl who had no idea that one day, someone would look back at all those years and realize just how precious they were.</p>
+        
+        <p class="break-line">And maybe that's why you mean so much to me.<br/>
+        Not because of one particular memory.<br/>
+        But because you're part of so many of them.</p>
+        
+        <p>You are scattered throughout my childhood.<br/>
+        A little piece of you exists in so many years of my life that removing you from my memories would mean removing pieces of myself too.</p>
+        
+        <p>And yes, you've been incredibly annoying.<br/>
+        Sometimes impressively annoying.<br/>
+        There should probably be an award for it. 🏆</p>
+        
+        <p class="break-line">But if someone gave me the chance to go back and change one thing about those years...<br/>
+        I don't think I'd change you.<br/>
+        Not even the annoying parts.<br/>
+        Because those are part of the story too.</p>
+        
+        <p>And today, you're 26.<br/>
+        Which is honestly offensive.</p>
+        
+        <p>Because in my mind, we're still those two kids from Class 3 who thought growing up meant getting taller and having more freedom.<br/>
+        We didn't know it meant losing people.<br/>
+        Missing people.<br/>
+        Changing.<br/>
+        Sometimes hurting.<br/>
+        Sometimes pretending we're okay when we're not.</p>
+        
+        <p class="break-line">We didn't know that one day we'd look back and realize that some of the happiest moments of our lives had already happened without us knowing they were happening.<br/>
+        And maybe that's the saddest part of all.</p>
+        
+        <p>There are moments from our past I would give anything to experience for just five minutes again.<br/>
+        Not to change them.<br/>
+        Just to be there.<br/>
+        To hear those old laughs.<br/>
+        To see those familiar faces.<br/>
+        To be that version of us before life became complicated.<br/>
+        Before we learned that not everyone stays exactly where you left them.</p>
+        
+        <div class="letter-quote-callout">
+          "Somewhere in this enormous world, there is someone who remembers you from before you became who you are today.<br/>
+          Someone who remembers the child you were.<br/>
+          Someone who watched you grow.<br/>
+          Someone who has seen your happiest days and your difficult ones.<br/>
+          Someone who has known you long enough to remember versions of you that no longer exist."
+        </div>
+        
+        <p>And maybe one day, years from now, we'll both be old.<br/>
+        We'll have completely different lives.<br/>
+        We'll have forgotten half the conversations we've had.<br/>
+        We'll probably laugh at how seriously we took the stupid things we worried about when we were young.</p>
+        
+        <p>Maybe we'll meet somewhere and talk for an hour about our lives.<br/>
+        Maybe we'll only talk for ten minutes.<br/>
+        Maybe we'll become strangers who happen to share the same memories.</p>
+        
+        <p>I don't know.<br/>
+        And honestly, that's the part I don't like.</p>
+        
+        <p>Because I don't know where life is taking either of us.<br/>
+        I don't know who you'll become.<br/>
+        I don't know who I'll become.<br/>
+        I don't know how many more birthdays I'll get to wish you.</p>
+        
+        <p class="break-line"><strong>But I know something.</strong><br/>
+        If there ever comes a day when you forget how much you meant to someone...<br/>
+        I hope you remember this story.</p>
+        
+        <p>Because there was once a boy in Class 3 who had no idea that the little girl sitting beside him would become such a huge part of his life.<br/>
+        He didn't know he'd grow up remembering her laugh.<br/>
+        He didn't know he'd miss certain versions of her.<br/>
+        He didn't know he'd have so many things he wished he could say.<br/>
+        He didn't know that sometimes, loving someone doesn't mean getting to keep them exactly the way you want.<br/>
+        Sometimes it means being grateful that you got to know them at all.</p>
+        
+        <p class="break-line">So, on your 26th birthday, I won't wish that you stay the same.<br/>
+        I hope you change.<br/>
+        I hope you grow.<br/>
+        I hope you become happier than you've ever been.<br/>
+        I hope life gives you everything you deserve, even if one day I'm no longer close enough to see it.</p>
+        
+        <p>And if someday you look back at your life and wonder whether you were ever truly important to someone...<br/>
+        Please remember me.</p>
+        
+        <p>Not because I want you to miss me.<br/>
+        Not because I want you to come back to some old version of us.<br/>
+        Just remember me because...<br/>
+        <strong>I was there.</strong><br/>
+        From Class 3.</p>
+        
+        <p>And for a surprisingly long part of your life,<br/>
+        <strong>I got to call you mine to care about.</strong></p>
+        
+        <p class="break-line">Maybe that's all some people are meant to be.<br/>
+        Not forever.<br/>
+        Not the final chapter.<br/>
+        Just a beautiful part of the story...<br/>
+        that you carry with you,<br/>
+        even after the story moves on.</p>
+        
+        <p style="font-size:1.25rem;color:#ff1744;font-weight:700;margin:24px 0;">Happy 26th birthday. ❤️</p>
+        
+        <p>And if you ever wonder why this birthday message was a little too emotional...<br/>
+        It's because I finally realized something:</p>
+        
+        <div class="letter-quote-callout" style="border-left-color:#ffd700;background:#fffdf0;color:#2d0035;">
+          <strong>"You weren't just someone I grew up with.<br/>
+          You were one of the reasons my growing up was worth remembering."</strong>
+        </div>
+        
+        <p>And I don't think I'll ever stop being grateful for that. 💛</p>
+      </div>
+      <div class="letter-sign">Always in your corner, from Class 3 to infinity ✨</div>
     </div>
-    <div class="letter-sign">With all the warmth in the world 💛</div>
   </div>
 </section>
 
@@ -1258,6 +1542,46 @@ function closeSorryModal(){
 function handleSorryOverlayClick(e){
   if(e.target.id === 'sorry-modal-overlay'){
     closeSorryModal();
+  }
+}
+
+/* ── REVEAL SECRET LETTER ON BUTTON CLICK ── */
+function toggleSecretLetter(){
+  const wrapper = document.getElementById('secret-letter-wrapper');
+  const btn = document.getElementById('btn-toggle-letter');
+  const icon = document.getElementById('letter-btn-icon');
+  const text = document.getElementById('letter-btn-text');
+
+  if(wrapper.classList.contains('revealed')){
+    wrapper.classList.remove('revealed');
+    if(icon) icon.textContent = '💌';
+    if(text) text.textContent = 'Click Here to Read My Letter to You';
+  } else {
+    wrapper.classList.add('revealed');
+    if(icon) icon.textContent = '📖';
+    if(text) text.textContent = 'Close Letter';
+    
+    // Smoothly scroll down to the letter
+    setTimeout(()=>{
+      wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+
+    // Launch special gentle hearts and confetti celebration for the reveal
+    launchHearts();
+    startConfetti();
+    const gentleNotes = ['🌸', '💛', '💌', '✨', '🌹'];
+    for(let i=0; i<20; i++){
+      setTimeout(()=>{
+        const note = document.createElement('div');
+        note.className = 'music-note';
+        note.textContent = gentleNotes[Math.floor(Math.random()*gentleNotes.length)];
+        note.style.left = (Math.random()*90 + 5) + 'vw';
+        note.style.top = (Math.random()*70 + 20) + 'vh';
+        note.style.fontSize = (Math.random()*1.5 + 1) + 'rem';
+        document.body.appendChild(note);
+        setTimeout(()=>note.remove(), 3500);
+      }, i * 60);
+    }
   }
 }
 </script>
