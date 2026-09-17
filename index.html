@@ -383,6 +383,96 @@
       .polaroid img{height:140px;}
       .traits-grid{grid-template-columns:repeat(2,1fr);}
     }
+
+    /* ── FUNNY SORRY CORRECTION BADGE & ANIMATION ── */
+    .funny-sorry-banner {
+      margin: 22px auto 8px;
+      max-width: 580px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 2px dashed #ffd700;
+      border-radius: 20px;
+      padding: 14px 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      animation: gentleWiggle 4s ease-in-out infinite;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .funny-sorry-banner:hover {
+      transform: scale(1.03) rotate(-1deg);
+      border-color: #ff6b9d;
+    }
+    @keyframes gentleWiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-1deg); }
+      75% { transform: rotate(1deg); }
+    }
+    .sorry-tag {
+      display: inline-block;
+      background: #ff4081;
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+      animation: pulse 1.5s infinite;
+    }
+    .correction-headline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .strikethrough-old {
+      position: relative;
+      color: #ff85a1;
+      font-weight: 700;
+      text-decoration: line-through 3px #ff1744;
+      display: inline-block;
+      animation: headShake 2.5s infinite;
+    }
+    @keyframes headShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-4px); }
+      40%, 80% { transform: translateX(4px); }
+    }
+    .corrected-new {
+      color: #ffd700;
+      font-weight: 800;
+      font-size: 1.25em;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.7);
+      display: inline-block;
+      animation: celebrationBounce 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes celebrationBounce {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.15) translateY(-3px); }
+    }
+    .sorry-funny-sub {
+      font-size: clamp(0.78rem, 2vw, 0.88rem);
+      color: #ffebf3;
+      margin-top: 6px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+    .sorry-popup-trigger {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #ffd700;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -439,7 +529,23 @@
   <div class="hero-emoji-ring">🌸</div>
   <h1 class="hero-title">Happy Birthday!</h1>
   <div class="hero-age">✨ Turning 26 ✨</div>
-  <p class="hero-sub">From classmates in Grade 6 to this beautiful journey of years —<br/>some bonds just get sweeter with time 🌷</p>
+  
+  <!-- FUNNY APOLOGY ANIMATION -->
+  <div class="funny-sorry-banner" onclick="showSorryAlert()">
+    <div class="sorry-tag">🚨 HUGE CONFESSION / SORRY! 🙇‍♂️</div>
+    <div class="correction-headline">
+      <span>Classmates since:</span>
+      <span class="strikethrough-old">Class 6 ❌</span>
+      <span>➡️</span>
+      <span class="corrected-new">CLASS 3! 🌟</span>
+    </div>
+    <div class="sorry-funny-sub">
+      "Wait wait wait... don't kill me! 😭 My memory short-circuited! We’ve actually known each other since Class 3, which makes our bond even longer and way cooler!" 🙈💖
+    </div>
+    <span class="sorry-popup-trigger">👉 Click here to forgive me (or launch extra confetti) 🎉</span>
+  </div>
+
+  <p class="hero-sub" style="margin-top:12px;">From classmates in Class 3 all the way to 26 —<br/>some bonds are truly once in a lifetime 🌷</p>
   <div class="hero-cta">
     <button class="btn-surprise" onclick="showSurprise()">🎁 Open Your Surprise</button>
     <a href="#gallery" class="btn-explore" onclick="event.preventDefault();document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">📸 View Gallery</a>
@@ -471,8 +577,8 @@
   <div class="stats-grid">
     <div class="stat-card fade-up">
       <span class="stat-icon">🏫</span>
-      <span class="stat-num" data-target="15">0</span>
-      <div class="stat-label">Years of knowing<br/>each other 💛</div>
+      <span class="stat-num" data-target="17">0</span>
+      <div class="stat-label">Years of knowing<br/>each other (since Class 3!) 💛</div>
     </div>
     <div class="stat-card fade-up">
       <span class="stat-icon">🎂</span>
@@ -574,7 +680,7 @@
 <section class="parallax-quote fade-up">
   <div class="pq-inner">
     <div class="pq-text">
-      "From the same classroom in <span>Class 6</span> to watching you bloom into the most <span>extraordinary</span> person — what a privilege this journey has been."
+      "From the same classroom in <span>Class 3</span> to watching you bloom into the most <span>extraordinary</span> person — what a privilege this journey has been."
     </div>
     <div class="pq-author">— A classmate who got lucky 💛</div>
     <div class="pq-hearts">🌸 💛 🌸</div>
@@ -589,7 +695,7 @@
     <div class="section-line"></div>
   </div>
   <div class="timeline">
-    <div class="tl-item fade-up"><div class="tl-dot">🏫</div><div class="tl-content"><div class="tl-year">Class 6 — The Beginning</div><div class="tl-title">First Hello 👋</div><div class="tl-text">Two little classmates sharing the same classroom, not knowing they'd share years of beautiful memories.</div></div></div>
+    <div class="tl-item fade-up"><div class="tl-dot">🏫</div><div class="tl-content"><div class="tl-year">Class 3 — The Real Beginning (Not Class 6! 😅)</div><div class="tl-title">First Hello 👋</div><div class="tl-text">Two tiny kids sharing pencils, tiffin, and the same classroom in Class 3! Who knew back then that you'd still be my favourite human so many years later?</div></div></div>
     <div class="tl-item fade-up"><div class="tl-dot">📚</div><div class="tl-content"><div class="tl-year">School Days</div><div class="tl-title">Growing Up Together 🌱</div><div class="tl-text">Study sessions, lunch breaks, school events — building a bond that time would only strengthen.</div></div></div>
     <div class="tl-item fade-up"><div class="tl-dot">🌍</div><div class="tl-content"><div class="tl-year">Adventures</div><div class="tl-title">Snow, Temples & Purple Sunsets 💜</div><div class="tl-text">New places, new memories — from snowy winters to mountain resorts, always living beautifully.</div></div></div>
     <div class="tl-item fade-up"><div class="tl-dot">⭐</div><div class="tl-content"><div class="tl-year">Through the Years</div><div class="tl-title">Same Bond, Bigger Hearts 💛</div><div class="tl-text">Life changed, years passed, but the warmth of this friendship stayed — maybe even warmer.</div></div></div>
@@ -610,7 +716,7 @@
     <div class="wish-card fade-up"><div class="wish-icon">🌙</div><div class="wish-title">Light Your Path</div><div class="wish-text">Just as the Bhagavad Gita guides its seekers, may clarity and wisdom light every step of your journey.</div></div>
     <div class="wish-card fade-up"><div class="wish-icon">🌟</div><div class="wish-title">Stay Extraordinary</div><div class="wish-text">There's something rare about you — the way you carry wisdom, grace and warmth all at once.</div></div>
     <div class="wish-card fade-up"><div class="wish-icon">🎵</div><div class="wish-title">Dance Through Life</div><div class="wish-text">May every chapter of your story play out like your favourite song — full of rhythm and beautiful surprises.</div></div>
-    <div class="wish-card fade-up"><div class="wish-icon">🌸</div><div class="wish-title">Forever Cherished</div><div class="wish-text">Thank you for being a constant — a friendly face from Class 6 who got even more wonderful every year.</div></div>
+    <div class="wish-card fade-up"><div class="wish-icon">🌸</div><div class="wish-title">Forever Cherished</div><div class="wish-text">Thank you for being a constant — a friendly face from Class 3 who got even more wonderful every year.</div></div>
   </div>
 </section>
 
@@ -635,7 +741,7 @@
   <div class="letter-box fade-up">
     <div class="letter-content">
       <p>Hey you,</p><br/>
-      <p>I still remember the days we sat in the same classroom in <span>Class 6</span> — little did I know that person would become one of the most <span>beautiful constants</span> in my life.</p><br/>
+      <p>I still remember the days we sat in the same classroom in <span>Class 3</span> (and yes, sorry again for momentarily typing Class 6 earlier! 🙈 My brain got overwhelmed by how breathtaking your photos are!). Little did I know that tiny classmate from Class 3 would become one of the most <span>precious constants</span> in my life.</p><br/>
       <p>All these years later, and you're still <span>just as wonderful</span> — maybe even more so. The way you carry yourself, your curiosity, your depth... it's genuinely something special to witness.</p><br/>
       <p>That photo of you with the <span>Bhagavad Gita</span>? Those eyes peeking out from behind the pages of one of the world's greatest books — that image captures everything. There's a quiet <span>wisdom and mystery</span> in those eyes that I find absolutely incredible.</p><br/>
       <p>And now seeing you in the snow, at temples, in pink sarees, laughing in the mountains — every version of you is <span>breathtaking</span> in its own way.</p><br/>
@@ -648,7 +754,7 @@
 
 <footer>
   <div class="footer-logo">Happy 26th! 🎂</div>
-  <p>Made with love for an extraordinary person 💛<br/>From classmates in Class 6, to this moment — what a beautiful journey.</p>
+  <p>Made with love for an extraordinary person 💛<br/>From classmates in Class 3, to this moment — what an incredible journey.</p>
   <div class="footer-hearts">🌸 💛 🌟 💛 🌸</div>
 </footer>
 
@@ -935,6 +1041,29 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t)t.scrollIntoView({behavior:'smooth'});
   });
 });
+
+/* ── FUNNY SORRY POPUP ── */
+function showSorryAlert(){
+  startConfetti();
+  launchFireworks();
+  launchHearts();
+  const notes = ['🌸','🙈','💛','🥺','✨','🙇‍♂️'];
+  for(let i=0; i<30; i++){
+    setTimeout(()=>{
+      const n = document.createElement('div');
+      n.className = 'music-note';
+      n.textContent = notes[Math.floor(Math.random()*notes.length)];
+      n.style.left = (Math.random()*90 + 5) + 'vw';
+      n.style.top = (Math.random()*80 + 10) + 'vh';
+      n.style.fontSize = (Math.random()*1.5 + 1.2) + 'rem';
+      document.body.appendChild(n);
+      setTimeout(()=>n.remove(), 3500);
+    }, i * 60);
+  }
+  setTimeout(()=>{
+    alert("Official Statement 📜:\n\n'I humbly apologize for writing Class 6 earlier! My brain clearly experienced temporary malfunction due to excessive awe of your photos.\n\nKnowing you since Class 3 makes this story 100x more legendary! Happy 26th Birthday Sima!' 🎂✨");
+  }, 400);
+}
 </script>
 </body>
 </html>
